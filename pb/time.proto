@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package pb;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+service Time {
+  rpc Now(google.protobuf.Empty) returns (google.protobuf.Timestamp);
+  rpc Live(google.protobuf.Empty) returns (stream google.protobuf.Timestamp);
+}

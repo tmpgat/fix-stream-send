@@ -1,0 +1,22 @@
+version: v1
+managed:
+  enabled: true
+  go_package_prefix:
+    default: darace/pb
+plugins:
+  - plugin: buf.build/protocolbuffers/go
+    out: ../server/pb
+    opt:
+      - paths=source_relative
+  - plugin: buf.build/bufbuild/connect-go
+    out: ../server/pb
+    opt:
+      - paths=source_relative
+  - plugin: buf.build/bufbuild/es
+    out: ../client/pb
+    opt:
+      - target=js+dts
+  - plugin: buf.build/bufbuild/connect-es
+    out: ../client/pb
+    opt:
+      - target=js+dts
